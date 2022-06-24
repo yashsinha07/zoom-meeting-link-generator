@@ -1,6 +1,6 @@
 package com.project.zoommeetinglinkgenerator.controllers;
 
-import com.project.zoommeetinglinkgenerator.DTOs.MeetingFormDTO;
+import com.project.zoommeetinglinkgenerator.DTOs.ZoomMeetingObjectDTO;
 import com.project.zoommeetinglinkgenerator.services.GenerateMeetingLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,13 +16,13 @@ public class ZoomController {
     private GenerateMeetingLinkService generateMeetingLinkService;
 
     @PostMapping("/generateMeetingLink")
-    public ResponseEntity generateMeetingLink(@RequestBody MeetingFormDTO meetingFormDTO){
+    public ResponseEntity generateMeetingLink(@RequestBody ZoomMeetingObjectDTO zoomMeetingObjectDTO){
 
-        if (!meetingFormDTO.getPlatform().equals("Zoom") || meetingFormDTO.getMedium().equals("Offline"))
-            return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
+//        if (!zoomMeetingObjectDTO.getPlatform().equals("Zoom") || zoomMeetingObjectDTO.getMedium().equals("Offline"))
+//            return ResponseEntity.ok(HttpStatus.BAD_REQUEST);
 
-        String meetingLink = generateMeetingLinkService.generateMeetingLink();
+        ZoomMeetingObjectDTO response = generateMeetingLinkService.generateMeetingLink(zoomMeetingObjectDTO);
 
-        return ResponseEntity.ok(meetingLink);
+        return new ResponseEntity(response, HttpStatus.CREATED);
     }
 }
