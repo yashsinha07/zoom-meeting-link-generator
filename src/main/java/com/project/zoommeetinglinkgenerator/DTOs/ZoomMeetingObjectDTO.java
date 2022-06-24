@@ -1,27 +1,25 @@
 package com.project.zoommeetinglinkgenerator.DTOs;
 
-import com.project.zoommeetinglinkgenerator.enums.Medium;
-import com.project.zoommeetinglinkgenerator.enums.Platform;
 import lombok.Data;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 @Data
 public class ZoomMeetingObjectDTO {
 
-    private String startTime;
+    private String title;
 
-    private int duration;
+    private String medium;
 
-    private String scheduledFor;
+    private String fromDate;
 
-    private String timezone;
+    private String fromTime;
 
-    private String password;
+    private String toDate;
 
-    private String agenda;
+    private String toTime;
 
-    private Recurrence recurrence;
+    private String emailAddress;
+
+    private String platform;
+
+    private String description;
 }
